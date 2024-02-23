@@ -10,7 +10,7 @@ Sebuah halaman landing sederhana - pertama kali dirancang di figma dan kemudian 
 
 ## Penggunaan
 
-Setelah menginstal dependensi, Anda dapat menjalankan proyek dengan menjalankan perintah: 'npm start'
+Setelah menginstal dependensi, Anda dapat menjalankan proyek dengan menjalankan perintah: `npm start`
 
 Proyek akan dijalankan di [localhost:3000](http://localhost:3000) secara default.
 
