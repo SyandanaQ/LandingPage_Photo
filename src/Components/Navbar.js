@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
-import Logo from "../Assets/Logo.svg";
 import { BsCart2 } from "react-icons/bs";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import Box from "@mui/material/Box";
@@ -16,9 +14,11 @@ import InfoIcon from "@mui/icons-material/Info";
 import CommentRoundedIcon from "@mui/icons-material/CommentRounded";
 import PhoneRoundedIcon from "@mui/icons-material/PhoneRounded";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
+import BasicDemo from "./BasicDemo";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [isBookingVisible, setIsBookingVisible] = useState(false);
   const menuOptions = [
     {
       text: "Home",
@@ -41,10 +41,18 @@ const Navbar = () => {
       icon: <ShoppingCartRoundedIcon />,
     },
   ];
+
+  const handleBookingsClick = () => {
+    setIsBookingVisible(!isBookingVisible);
+  };
+
   return (
     <nav>
-      <div className="nav-logo-container" style={{ color: 'orange', fontSize: '70px', fontWeight: 'bold' }}>
-      <span>JEPRET</span>
+      <div
+        className="nav-logo-container"
+        style={{ color: "orange", fontSize: "70px", fontWeight: "bold" }}
+      >
+        <span>JEPRET</span>
       </div>
       <div className="navbar-links-container">
         <a href="">Home</a>
@@ -54,7 +62,14 @@ const Navbar = () => {
         <a href="">
           <BsCart2 className="navbar-cart-icon" />
         </a>
-        <button className="primary-button">Bookings Now</button>
+        <button className="primary-button" onClick={handleBookingsClick}>
+          Bookings Now
+        </button>
+        {isBookingVisible && (
+          <div className="card flex justify-content-center">
+            <BasicDemo />
+          </div>
+        )}
       </div>
       <div className="navbar-menu-container">
         <HiOutlineBars3 onClick={() => setOpenMenu(true)} />

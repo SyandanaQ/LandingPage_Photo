@@ -1,7 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import PortoPic from "../Assets/port.jpg";
+import { FiArrowRight } from "react-icons/fi";
 
 const Porto = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const images = [
+    { id: 1, alt: "Image 1", src: PortoPic },
+    { id: 2, alt: "Image 2", src: PortoPic },
+    { id: 3, alt: "Image 3", src: PortoPic },
+    { id: 4, alt: "Image 4", src: PortoPic },
+    // ...Tambahkan lebih banyak gambar jika diperlukan
+  ];
+
+  const handlePrev = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
   return (
     <div className="work-section-wrapper">
       <div className="work-section-top">
@@ -13,10 +34,17 @@ const Porto = () => {
         </p>
       </div>
       <div className="portopic">
-        <img src={PortoPic} alt="Image 1" />
-        <img src={PortoPic} alt="Image 2" />
-        <img src={PortoPic} alt="Image 3" />
-        <img src={PortoPic} alt="Image 4" />
+        {images.map((image, index) => (
+          <img
+            key={image.id}
+            src={image.src}
+            alt={image.alt}
+            className={index === currentIndex ? "visible" : "hidden"}
+          />
+        ))}
+        <div className="porto-buttons-container">
+          <button className="secondary-button">Watch More <FiArrowRight />{" "}</button>
+        </div>
       </div>
     </div>
   );

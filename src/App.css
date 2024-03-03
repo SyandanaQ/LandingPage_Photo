@@ -167,6 +167,13 @@ nav {
   font-size: 3rem;
   margin-right: 1rem;
 }
+.porto-buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  
+}
 .contact-page-wrapper h1 {
   max-width: 900px !important;
 }
